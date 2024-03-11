@@ -1,14 +1,14 @@
-const getServiceList = document.querySelector(".services-list-links");
-getServiceList.querySelectorAll("details.e-n-accordion-item");
 
-const currentURL = window.location.href;
-const urlParts = currentURL.split(/\/+/).filter(Boolean);
-console.log(urlParts);
-const storeLastValue = urlParts.pop();
-console.log(storeLastValue);
+const linkListDetails = document.querySelectorAll('details.e-n-accordion-item');
 
-
-
-getServiceList.querySelectorAll("details").forEach((item, index) => {
-    console.log(item, index);
+linkListDetails.forEach(item => {
+	const mylink = item.querySelectorAll('a');
+	mylink.forEach(link => {
+		const currentURL = document.location.href;
+		// console.log(link.getAttribute ('href'));
+		if (link.getAttribute('href') == currentURL) {
+			const currentText = item.querySelector('summary');
+			currentText.click();
+		}
+	});
 });
